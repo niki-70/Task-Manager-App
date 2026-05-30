@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useTasks } from '@/hooks/useTasks';
 import { useDebounce } from '@/hooks/useDebounce';
 import { TaskCard } from '@/components/ui/task-card';
-import { Modal } from '@/components/ui/modal';
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogDescription 
+} from '@/components/ui/dialog';
 import { 
   Search, 
   Filter, 
@@ -338,12 +344,16 @@ export default function Tasks() {
         )
       )}
 
-      {/* Task Creation & Editing Modal */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title={editingTask ? '📝 Edit Task' : '🚀 Add Task'}
-      >
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="border border-neutral-800 bg-neutral-900/95 backdrop-blur-xl text-neutral-100 rounded-2xl max-w-lg p-6 [&>button]:text-neutral-400 [&>button]:hover:text-neutral-100">
+          <DialogHeader className="border-b border-neutral-800 pb-3 mb-2 flex flex-col gap-1">
+            <DialogTitle className="text-lg font-bold text-neutral-100">
+              {editingTask ? '📝 Edit Task' : '🚀 Add Task'}
+            </DialogTitle>
+            <DialogDescription className="sr-only">
+              Form to configure task title, description, priority, status, and due date.
+            </DialogDescription>
+          </DialogHeader>
         <form onSubmit={handleFormSubmit} className="space-y-4">
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-neutral-400 mb-1.5 pl-0.5">
@@ -433,7 +443,8 @@ export default function Tasks() {
             </button>
           </div>
         </form>
-      </Modal>
+      </DialogContent>
+    </Dialog>
 
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Edit2, Trash2, CheckCircle2, Circle } from 'lucide-react';
 import { Badge } from './badge';
+import { Card } from './card';
 import { cn } from '@/lib/utils';
 
 export function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
@@ -14,10 +15,10 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
   const isOverdue = !isCompleted && new Date(task.dueDate) < new Date(new Date().setHours(0,0,0,0));
 
   return (
-    <div
+    <Card
       className={cn(
-        'group relative overflow-hidden rounded-xl border p-5 transition-all duration-300',
-        'bg-neutral-900/40 border-neutral-800 backdrop-blur-sm',
+        'group relative overflow-hidden rounded-xl border p-5 transition-all duration-300 gap-0 py-5',
+        'bg-neutral-900/40 border-neutral-800 backdrop-blur-sm shadow-none',
         'hover:-translate-y-1 hover:border-neutral-700 hover:bg-neutral-900/70',
         'hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)]',
         isCompleted && 'opacity-70 border-neutral-900/50 bg-neutral-950/20'
@@ -64,7 +65,7 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
 
           <p
             className={cn(
-              'text-sm text-neutral-400 line-clamp-2 mb-4 pr-2 font-normal',
+              'text-sm text-neutral-400 mb-4 pr-2 font-normal',
               isCompleted && 'text-neutral-500'
             )}
           >
@@ -105,6 +106,6 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

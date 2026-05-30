@@ -20,58 +20,7 @@ export function TasksProvider({ children }) {
     localStorage.setItem('task_manager_tasks', JSON.stringify(allTasks));
   }, [allTasks]);
 
-  // Seed default tasks for a new user if they have 0 tasks in the system
-  useEffect(() => {
-    if (user) {
-      const userTasksCount = allTasks.filter((t) => t.userId === user.id).length;
-      if (userTasksCount === 0) {
-        const now = new Date();
-        const twoDaysFromNow = new Date();
-        twoDaysFromNow.setDate(now.getDate() + 2);
-        
-        const yesterday = new Date();
-        yesterday.setDate(now.getDate() - 1);
 
-        const fiveDaysFromNow = new Date();
-        fiveDaysFromNow.setDate(now.getDate() + 5);
-
-        const defaultTasks = [
-          {
-            id: `tsk_def1_${Date.now()}`,
-            userId: user.id,
-            title: '🚀 Design Task Manager Dashboard',
-            description: 'Refine layout structure using glassmorphism, harmonious HSL/OKLCH color themes, and circular progress widgets.',
-            status: 'in-progress',
-            priority: 'high',
-            dueDate: twoDaysFromNow.toISOString().split('T')[0],
-            createdAt: now.toISOString(),
-          },
-          {
-            id: `tsk_def2_${Date.now()}`,
-            userId: user.id,
-            title: '🔒 Implement User Authentication',
-            description: 'Configure clean simulated authentication state with custom hooks using localStorage-backed account creation and sessions.',
-            status: 'completed',
-            priority: 'medium',
-            dueDate: yesterday.toISOString().split('T')[0],
-            createdAt: yesterday.toISOString(),
-          },
-          {
-            id: `tsk_def3_${Date.now()}`,
-            userId: user.id,
-            title: '🧪 Write Automated Integration Tests',
-            description: 'Implement simple script-based validation schemas for UI flows and state handlers to keep components robust.',
-            status: 'todo',
-            priority: 'low',
-            dueDate: fiveDaysFromNow.toISOString().split('T')[0],
-            createdAt: now.toISOString(),
-          }
-        ];
-
-        setAllTasks((prev) => [...prev, ...defaultTasks]);
-      }
-    }
-  }, [user, allTasks]);
 
   // Filter tasks to only include the logged-in user's tasks
   const tasks = user ? allTasks.filter((t) => t.userId === user.id) : [];
