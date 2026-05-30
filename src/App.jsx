@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '@/hooks/useAuth';
 import { TasksProvider } from '@/hooks/useTasks';
@@ -23,6 +23,16 @@ function PublicRoute({ children }) {
 }
 
 export default function App() {
+  // Sync the theme class with root element on startup to prevent flash of light mode on public routes
+  useEffect(() => {
+    const stored = localStorage.getItem('task_manager_theme') || 'dark';
+    const root = document.documentElement;
+    if (stored === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, []);
   return (
     <AuthProvider>
       <TasksProvider>
