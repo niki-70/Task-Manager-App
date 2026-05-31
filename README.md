@@ -1,16 +1,54 @@
-# React + Vite
+# VortexTasks - Premium Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+VortexTasks is a premium, high-fidelity task management application designed to streamline personal workflows and increase daily productivity. It features a stunning glassmorphic user interface, fully responsive views including an interactive mobile Kanban board, and client-side database persistence.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Core Framework**: React 18 + Vite (ESM support)
+- **Styling & Theme**: Tailwind CSS v4 (incorporating OKLCH fluid color tokens)
+- **UI Architecture**: shadcn/ui components (Badge, Dialog, Card) + Lucide Icons
+- **State & Routing**: React Context-backed custom hooks (`useAuth`, `useTasks`) + React Router DOM v7
+- **Persistence**: `localStorage` (isolating sessions and task CRUD per account)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Local Setup
 
-## Expanding the ESLint configuration
+Follow these simple steps to run the project locally on your machine:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Install Dependencies
+Navigate to your project root folder in the terminal and install the required packages:
+```bash
+npm install
+```
+
+### 2. Run the Development Server
+Launch Vite's hot-reloading development server:
+```bash
+npm run dev
+```
+Open your browser and navigate to the address shown in the terminal (usually `http://localhost:5173`).
+
+### 3. Build for Production (Optional)
+Generate an optimized production bundle inside the `dist` folder:
+```bash
+npm run build
+```
+
+---
+
+## 📸 Working UI Screenshots
+
+Here are the placeholders for the screenshots of the working user interface (add your files inside `public/screenshots/` to display them here):
+
+### 1. Dashboard Page
+![Dashboard View](public/screenshots/dashboard.png)
+*Displays high-level productivity stats, an interactive completion circular progress widget, priority distributions, and due-soon lists.*
+
+### 2. Kanban Board View
+![Kanban Board View](public/screenshots/kanban.png)
+*Interactive task board showing To Do, In Progress, and Completed columns with horizontal swipe gestures on mobile viewports.*
+
+### 3. Login Page
+![Login View](public/screenshots/login.png)
+*A sleek, glassmorphic entry form with validation alerts and ambient glowing accents.*

@@ -229,7 +229,7 @@ export default function Dashboard() {
                 {dueSoonTasks.map((task) => (
                   <div
                     key={task.id}
-                    className="flex items-center justify-between p-3.5 rounded-xl border border-neutral-850 bg-neutral-950/20 hover:bg-neutral-950/45 transition-colors group"
+                    className="flex items-center justify-between p-3.5 rounded-xl border border-neutral-800 bg-neutral-950/20 hover:bg-neutral-950/45 transition-colors group"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       {/* Checkbox trigger */}

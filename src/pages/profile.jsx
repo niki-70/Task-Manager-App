@@ -92,11 +92,11 @@ export default function Profile() {
             </h3>
             
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 bg-neutral-950/20 border border-neutral-850 rounded-xl">
+              <div className="p-3 bg-neutral-950/20 border border-neutral-800 rounded-xl">
                 <span className="text-[10px] font-bold text-neutral-500 block uppercase">Tasks Created</span>
                 <span className="text-2xl font-black text-neutral-200 mt-1 block">{totalCreated}</span>
               </div>
-              <div className="p-3 bg-neutral-950/20 border border-neutral-850 rounded-xl">
+              <div className="p-3 bg-neutral-950/20 border border-neutral-800 rounded-xl">
                 <span className="text-[10px] font-bold text-neutral-500 block uppercase">Tasks Completed</span>
                 <span className="text-2xl font-black text-emerald-400 mt-1 block">{completedCount}</span>
               </div>

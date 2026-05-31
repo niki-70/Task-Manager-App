@@ -185,7 +185,7 @@ export default function Tasks() {
             placeholder="Search tasks..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-xl border border-neutral-850 bg-neutral-950/20 py-2 pl-9.5 pr-4 text-xs text-neutral-200 placeholder-neutral-500 transition-all focus:border-violet-500/40 focus:bg-neutral-950/40 focus:outline-none"
+            className="w-full rounded-xl border border-neutral-800 bg-neutral-950/20 py-2 pl-9.5 pr-4 text-xs text-neutral-200 placeholder-neutral-500 transition-all focus:border-violet-500/40 focus:bg-neutral-950/40 focus:outline-none"
           />
         </div>
 
@@ -198,7 +198,7 @@ export default function Tasks() {
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
             disabled={viewMode === 'kanban'}
-            className="w-full rounded-xl border border-neutral-850 bg-neutral-950/20 py-2 pl-9.5 pr-4 text-xs text-neutral-200 focus:border-violet-500/40 focus:outline-none appearance-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full rounded-xl border border-neutral-800 bg-neutral-950/20 py-2 pl-9.5 pr-4 text-xs text-neutral-200 focus:border-violet-500/40 focus:outline-none appearance-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <option value="all">All Statuses</option>
             <option value="todo">To Do</option>
@@ -215,7 +215,7 @@ export default function Tasks() {
           <select
             value={priorityFilter}
             onChange={(e) => setPriorityFilter(e.target.value)}
-            className="w-full rounded-xl border border-neutral-850 bg-neutral-950/20 py-2 pl-9.5 pr-4 text-xs text-neutral-200 focus:border-violet-500/40 focus:outline-none appearance-none cursor-pointer"
+            className="w-full rounded-xl border border-neutral-800 bg-neutral-950/20 py-2 pl-9.5 pr-4 text-xs text-neutral-200 focus:border-violet-500/40 focus:outline-none appearance-none cursor-pointer"
           >
             <option value="all">All Priorities</option>
             <option value="high">High Priority</option>
@@ -232,7 +232,7 @@ export default function Tasks() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="w-full rounded-xl border border-neutral-850 bg-neutral-950/20 py-2 pl-9.5 pr-4 text-xs text-neutral-200 focus:border-violet-500/40 focus:outline-none appearance-none cursor-pointer"
+            className="w-full rounded-xl border border-neutral-800 bg-neutral-950/20 py-2 pl-9.5 pr-4 text-xs text-neutral-200 focus:border-violet-500/40 focus:outline-none appearance-none cursor-pointer"
           >
             <option value="dueDate-asc">Due Date: Soonest</option>
             <option value="dueDate-desc">Due Date: Latest</option>
@@ -245,7 +245,7 @@ export default function Tasks() {
       {/* Main Board Area */}
       {viewMode === 'kanban' ? (
         /* Kanban Board View */
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="flex flex-row overflow-x-auto md:grid md:grid-cols-3 gap-6 pb-4 md:pb-0 snap-x snap-mandatory">
           {['todo', 'in-progress', 'completed'].map((status) => {
             const columnTasks = filteredTasks.filter((t) => t.status === status);
             const statusLabel = 
@@ -260,7 +260,7 @@ export default function Tasks() {
               <div
                 key={status}
                 className={cn(
-                  'rounded-2xl border border-neutral-800 border-t-4 p-5 min-h-[500px] flex flex-col',
+                  'rounded-2xl border border-neutral-800 border-t-4 p-5 min-h-[500px] flex flex-col snap-align-start shrink-0 w-[88vw] md:w-auto md:shrink',
                   columnColor
                 )}
               >
@@ -390,7 +390,7 @@ export default function Tasks() {
               <select
                 value={formPriority}
                 onChange={(e) => setFormPriority(e.target.value)}
-                className="w-full rounded-xl border border-neutral-800 bg-neutral-900/50 py-2 px-3 text-xs text-neutral-250 focus:border-violet-500/50 focus:outline-none appearance-none cursor-pointer"
+                className="w-full rounded-xl border border-neutral-800 bg-neutral-900/50 py-2 px-3 text-xs text-neutral-300 focus:border-violet-500/50 focus:outline-none appearance-none cursor-pointer"
               >
                 <option value="high">High</option>
                 <option value="medium">Medium</option>
@@ -405,7 +405,7 @@ export default function Tasks() {
               <select
                 value={formStatus}
                 onChange={(e) => setFormStatus(e.target.value)}
-                className="w-full rounded-xl border border-neutral-800 bg-neutral-900/50 py-2 px-3 text-xs text-neutral-250 focus:border-violet-500/50 focus:outline-none appearance-none cursor-pointer"
+                className="w-full rounded-xl border border-neutral-800 bg-neutral-900/50 py-2 px-3 text-xs text-neutral-300 focus:border-violet-500/50 focus:outline-none appearance-none cursor-pointer"
               >
                 <option value="todo">To Do</option>
                 <option value="in-progress">In Progress</option>
@@ -423,7 +423,7 @@ export default function Tasks() {
               required
               value={formDueDate}
               onChange={(e) => setFormDueDate(e.target.value)}
-              className="w-full rounded-xl border border-neutral-800 bg-neutral-900/50 py-2 px-3.5 text-xs text-neutral-220 focus:border-violet-500/50 focus:outline-none cursor-pointer"
+              className="w-full rounded-xl border border-neutral-800 bg-neutral-900/50 py-2 px-3.5 text-xs text-neutral-300 focus:border-violet-500/50 focus:outline-none cursor-pointer"
             />
           </div>
 
@@ -431,7 +431,7 @@ export default function Tasks() {
             <button
               type="button"
               onClick={() => setIsModalOpen(false)}
-              className="px-4 py-2 border border-neutral-800 text-xs font-bold text-neutral-400 hover:text-neutral-200 hover:bg-neutral-850 rounded-xl transition-all cursor-pointer"
+              className="px-4 py-2 border border-neutral-800 text-xs font-bold text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800 rounded-xl transition-all cursor-pointer"
             >
               Cancel
             </button>
